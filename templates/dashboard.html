@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load Test Dashboard</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        p {
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <h1>Load Test Dashboard - Test ID: {{ test_id }}</h1>
+    
+    {% if metrics_data %}
+        <table>
+            <tr>
+                <th>Node ID</th>
+                <th>Report ID</th>
+                <th>Metrics Data</th>
+            </tr>
+            {% for node_id, report_data in metrics_data.items() %}
+                {% for report_id, metrics in report_data.items() %}
+                    <tr>
+                        <td>{{ node_id }}</td>
+                        <td>{{ report_id }}</td>
+                        <td>{{ metrics }}</td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No metrics data available for this test.</p>
+    {% endif %}
+</body>
+</html>

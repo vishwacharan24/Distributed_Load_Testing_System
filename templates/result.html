@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Load Test Result</title>
+</head>
+<body>
+
+  <h1>Load Test Result</h1>
+
+  <p>Number of Requests: {{ test_details['request_count'] }}</p>
+  <p>Number of Drivers: {{test_details['numberOfDrivers']}}</p>
+  <p>Test Type: {{ test_details['test_type'] }}</p>
+  {% if test_details['test_type'] == 'tsunami' %}
+    <p>Test Message Delay (in milliseconds): {{ test_details['message_delay'] }}</p>
+  {% endif %}
+  <p>Message Count per Driver: {{ test_details['message_count'] }}</p>
+
+</body>
+</html>
